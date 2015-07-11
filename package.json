@@ -65,7 +65,6 @@
   "devDependencies": {
     "blessed": "^0.1.61",
     "chai": "^3.0.0",
-    "gulp-develop-server": "^0.4.3",
     "mocha": "^2.2.5",
     "multiline": "^1.0.2",
     "supertest": "^1.0.1"
