@@ -17,3 +17,11 @@ exports.teampage = function(req, res) {
 
   });
 };
+
+exports.realteampage = function(req, res) {
+
+  res.render('realteampage', {
+    title: 'realteampage'
+
+  });
+};
