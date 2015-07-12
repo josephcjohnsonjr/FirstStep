@@ -139,10 +139,11 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
   }
 
   Projects.find().elemMatch('repos', {url: doc.repo_url, authed: true}, function(err, doc){
+
     this.updates[this.updates.length] = doc;
     this.save;
+    res.send({url: doc.repo_url, authed: true, err, doc});
   });
-  res.send({ok: true});
 };
 
 /**
