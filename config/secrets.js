@@ -21,7 +21,8 @@
 
 module.exports = {
 
-  db: process.env.MONGODB || 'mongodb://localhost:27017/test',
+  //db: process.env.MONGODB || 'mongodb://localhost:27017/test',
+  db: process.env.MONGODB || 'mongodb://admin:password@ds031571.mongolab.com:31571/firststep',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
@@ -64,8 +65,8 @@ module.exports = {
   },
 
   github: {
-    clientID: process.env.GITHUB_ID || 'cb448b1d4f0c743a1e36',
-    clientSecret: process.env.GITHUB_SECRET || '815aa4606f476444691c5f1c16b9c70da6714dc6',
+    clientID: process.env.GITHUB_ID || '188f4deecde99bff1b53',
+    clientSecret: process.env.GITHUB_SECRET || '7d28d376beb9325ad12836ad06375b43ac5d90f4',
     callbackURL: '/auth/github/callback',
     passReqToCallback: true
   },
