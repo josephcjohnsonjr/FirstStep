@@ -2,31 +2,13 @@ var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 
-var userSchema = new mongoose.Schema({
-  email: { type: String, unique: true, lowercase: true },
-  password: String,
-  
-  /*  Custom  */
-  type: String,
-  member_of: [mongoose.Types.ObjectID], //projects
-  creator_of: [mongoose.Types.ObjectID],  //projects
-  tags: [mongoose.Types.ObjectID],
-  /*  Custom  */
-  
-  facebook: String,
-  twitter: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  tokens: Array,
+var tagSchema = new mongoose.Schema({
 
-  name: { type: String, default: '' },
-  gender: { type: String, default: '' },
-  location: { type: String, default: '' },
-  website: { type: String, default: '' },
-  picture: { type: String, default: '' }
-
+  /*  Custom  */
+  name: String,
+  users: [mongoose.Types.ObjectID], //projects
+  projects: [mongoose.Types.ObjectID],  //projects
+  /*  ******  */
 
   resetPasswordToken: String,
   resetPasswordExpires: Date
@@ -35,7 +17,7 @@ var userSchema = new mongoose.Schema({
 /**
  * Password hash middleware.
  */
-userSchema.pre('save', function(next) {
+tagSchema.pre('save', function(next) {
   var user = this;
   if (!user.isModified('password')) return next();
   bcrypt.genSalt(10, function(err, salt) {
@@ -51,7 +33,7 @@ userSchema.pre('save', function(next) {
 /**
  * Helper method for validating user's password.
  */
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
+tagSchema.methods.comparePassword = function(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
     if (err) return cb(err);
     cb(null, isMatch);
@@ -61,11 +43,11 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 /**
  * Helper method for getting user's gravatar.
  */
-userSchema.methods.gravatar = function(size) {
+tagSchema.methods.gravatar = function(size) {
   if (!size) size = 200;
   if (!this.email) return 'https://gravatar.com/avatar/?s=' + size + '&d=retro';
   var md5 = crypto.createHash('md5').update(this.email).digest('hex');
   return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=retro';
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Tag', tagSchema);
