@@ -58,7 +58,7 @@ app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 app.use(compress());
 app.use(connectAssets({
-  paths: [path.join(__dirname, 'public/css'), path.join(__dirname, 'public/js'), path.join(__dirname,'public/images')]
+  paths: [path.join(__dirname, 'public/')]
 }));
 app.use(logger('dev'));
 app.use(favicon(path.join(__dirname, 'public/favicon.png')));
