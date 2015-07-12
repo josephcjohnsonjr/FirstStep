@@ -59,6 +59,21 @@ exports.getGithub = function(req, res, next) {
 
 };
 
+exports.postGithubWebhook = function(req, res, next) { //set up github webhook => https://developer.github.com/v3/repos/hooks/#create-a-hook
+  res.send(req);
+  /*var token = _.find(req.user.tokens, { kind: 'github' });
+  var github = new Github({ token: token.accessToken });
+  var repo = github.getRepo('sahat', 'requirejs-library');
+  repo.show(function(err, repo) {
+    if (err) return next(err);
+    res.render('api/github', {
+      title: 'GitHub API',
+      repo: repo
+    });
+  });*/
+
+};
+
 /**
  * GET /api/aviary
  * Aviary image processing example.
