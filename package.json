@@ -1,9 +1,9 @@
 {
-  "name": "hackathon-starter",
+  "name": "first-step",
   "version": "3.0.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/josephcjohnsonjr/FirstStep.git"
   },
   "scripts": {
     "start": "node app.js",
