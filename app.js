@@ -27,7 +27,11 @@ var connectAssets = require('connect-assets');
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+<<<<<<< HEAD
 var projectController = require('./controllers/projects');
+=======
+var setupController = require('./controllers/setup');
+>>>>>>> 251feaeff49b6070dbf8f470fa962f2c9692f7f8
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 
@@ -79,7 +83,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(lusca({
-//  csrf: true,
+//csrf: true,
   xframe: 'SAMEORIGIN',
   xssProtection: true
 }));
@@ -116,7 +120,8 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 
 app.post('/project', projectController.postProject);
 app.get('/project', projectController.findProject);
-        
+app.get('/setup', setupController.setup);
+app.get('/project', setupController.project);  
 /**
  * API examples routes.
  */
@@ -137,7 +142,7 @@ app.get('/api/lob', apiController.getLob);
  */
 app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
-  res.redirect(req.session.returnTo || '/');
+  res.redirect(req.session.returnTo || '/setup');
 });
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {

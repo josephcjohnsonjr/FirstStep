@@ -48,19 +48,12 @@ exports.getScraping = function(req, res, next) {
 exports.getGithub = function(req, res, next) {
   var token = _.find(req.user.tokens, { kind: 'github' });
   var github = new Github({ token: token.accessToken });
-  var repo = github.getRepo('sahat', 'requirejs-library');
-  repo.show(function(err, repo) {
-    if (err) return next(err);
-    res.render('api/github', {
-      title: 'GitHub API',
-      repo: repo
-    });
-  });
-
 };
 
-exports.postGithubWebhook = function(req, res, next) { //set up github webhook => https://developer.github.com/v3/repos/hooks/#create-a-hook
-  res.send(req);
+exports.postGithubWebhook = function(req, res) { //set up github webhook => https://developer.github.com/v3/repos/hooks/#create-a-hook
+  
+  res.send('hook recieved: '+ JSON.stringify(req.body)+
+            'headers: '+ JSON.stringify(req.headers));
   /*var token = _.find(req.user.tokens, { kind: 'github' });
   var github = new Github({ token: token.accessToken });
   var repo = github.getRepo('sahat', 'requirejs-library');

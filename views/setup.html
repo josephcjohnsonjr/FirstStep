@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		
+			
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 			<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -9,64 +10,141 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 		<!-- Latest compiled and minified JavaScript -->
+		
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="bootstrap-social.css" />
-		<link rel="stylesheet" type="text/css" href="font-awesome.min.css" />
-	    <link rel="stylesheet" type="text/css" href="style.css" />
+
+		<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-social.css" />
+		<link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css" />
+		<script type="text/javascript" src="./assets/js/angular.min.js"></script>
+	    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+
 	    <title>First Step - Setup your Account</title>
 	</head>
 	<body>
 
 		<div id="toolbar">
-			<h2>FirstStep</h2>
+		</div>
+		<div id="container">
+			<div class="row toolbar">
+				<div class="col-md-3">
+					<h2>FirstStep</h2>
+				</div>
+				<div class="col-md-3 col-md-offset-6">
+					<h4 style="margin-top: 10px">name of user</h4>
+				</div>
+
+			</div>
+			
+			<div class="row moveDown">
+				<div id="navbar" align="center">
+					<ul>
+						<li id="selectRole" class="current">1. Select your role</li>
+						<li id="selectInterests">2. Select your interests</li>
+					</ul>
+				</div>
+			</div>
+			<div id="chooseRole" align="center">
+				<h3>Select your Role</h3>
+					<img class="develop" src="../img/develop.png"> 
+					<img class="design" src="../img/design.png">
+			</div>
+			<div id="chooseInterests" align="center">
+				<h3>Select your interests</h3>
+				<form>
+					<ul>
+						<li>
+							<input id="Javascript" type="checkbox">
+							<label class="checkbox-primary" for="Javascript"> Javascript </label>
+
+							<input id="CSS" type="checkbox">
+							<label class="checkbox-primary" for="CSS"> CSS </label>
+
+							<input id="HTML" type="checkbox">
+							<label class="checkbox-primary" for="HTML"> HTML</label>
+
+							<input id="c++" type="checkbox">
+							<label class="checkbox-primary" for="C++"> C++ </label>
+						</li>
+					</ul>
+				</form>
+				<form>
+					<ul>
+						<li>
+							<input id="entertainment" type="checkbox">
+							<label class="checkbox-primary" for="Entertainment"> Entertainment </label>
+
+							<input id="sports" type="checkbox">
+							<label class="checkbox-primary" for="Sports"> Sports </label>
+
+							<input id="ruby" type="checkbox">
+							<label class="checkbox-primary" for="Ruby"> Ruby </label>
+
+							<input id="scala" type="checkbox">
+							<label class="checkbox-primary" for="Scala"> Scala </label>
+						</li>
+					</ul>
+				</form>
+				<form>
+					<ul>
+						<li>
+							<input id="socialjustice" type="checkbox">
+							<label class="checkbox-primary" for="SocialJustice"> Social Justice </label>
+
+							<input id="travel" type="checkbox">
+							<label class="checkbox-primary" for="Travel"> Travel </label>
+
+							<input id="finance" type="checkbox" >
+							<label class="checkbox-primary" for="Finance"> Finance </label>
+
+							<input id="education" type="checkbox" >
+							<label class="checkbox-primary" for="Education"> Education </label>
+						</li>
+						
+					</ul>
+				</form>
+			</div>
+			<div class="row">
+				<div class="col-md-offset-9 col-md-1">
+					<div class="done">
+						<button class="btn btn-default" id="goBackToChooseRole">Back</button>
+					</div>
+				</div>
+				<div class="col-md-offset-1 col-md-1">
+					<div class="done">
+						<button class="btn btn-primary">Done!</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-offset-9 col-md-1">
+					<div class="next">
+						<button class="btn btn-default" id="cancelAccountCreation">Cancel</button>	
+					</div>
+				</div>
+				
+				<div class="col-md-offset-1 col-md-1">
+					<div class="next">
+						<button class="btn btn-primary" id="goToChooseInterests">Next</button>
+					</div>	
+				</div>
+			</div>
 		</div>	
-		<div id="chooseRole">
-			<h2>step 1</h2>
-		</div>
-		<div id="chooseInterests">
-			<h2>step2</h2>
-			<button type=""></button>
-		</div>
-		<div class="row">
-			<div class="col-md-8"></div>
-			<div class="col-md-2" align="right">
-				<div class="done">
-					<button class="btn btn-default" id="goBackToChooseRole">Back</button>
-				</div>
-				<div class="next">
-					<button class="btn btn-default" id="cancelAccountCreation">Cancel</button>	
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="done">
-					<button class="btn btn-primary">Done!</button>
-				</div>
-				<div class="next">
-					<button class="btn btn-primary" id="goToChooseInterests">Next</button>
-				</div>		
-			</div>
-		</div>
-	
-
-
 	</body>
 
+
+	<script src="../js/custom.js"></script>
 	<script>
 
 		$('document').ready(function(){
 
-			$("#goBackToChooseRole").click(function(e){
-				$("#chooseRole").show();
-				$("#chooseInterests").hide();
-				$(".done").hide();
-				$(".next").show();
-				// $("#optionalInfo").removeClass("current"); this is for the breadcrumbs
-				// $("#requiredInfo").addClass("current");
-				$("#titleInfo").text("Select your role:");
-				e.preventDefault();
-			});
+			$("#chooseRole").show();
+			$("#chooseInterests").hide();
+			$(".done").hide();
+			$(".next").show();
+			$("#selectRole").addClass("current"); 
+			$("#selectInterests").removeClass("current");
+			$("#titleInfo").text("Select your role:");
 
 			$("#cancelAccountCreation").click(function(e){
 				parent.history.back();
@@ -76,8 +154,12 @@
 			$("#goToChooseInterests").click(function(e){
 				console.log("hi");
 				
+				$("#selectInterests").addClass("current"); 
+				$("#selectRole").removeClass("current");
 				$("#chooseRole").hide();
 				$("#chooseInterests").show();
+				$(".done").show();
+				$(".next").hide();
 			});
 		});
 
