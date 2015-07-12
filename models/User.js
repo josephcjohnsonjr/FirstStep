@@ -1,6 +1,7 @@
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var userSchema = new mongoose.Schema({
   email: { type: String, unique: true, lowercase: true },
@@ -8,9 +9,9 @@ var userSchema = new mongoose.Schema({
   
   /*  Custom  */
   type: String,
-  member_of: [{Schema.Types.ObjectID}], //projects
-  creator_of: [Schema.Types.ObjectID],  //projects
-  tags: [Schema.Types.ObjectID],
+  member_of: [Schema.Types.ObjectId], //projects
+  creator_of: [Schema.Types.ObjectId],  //projects
+  tags: [Schema.Types.ObjectId],
   /*  Custom  */
   
   facebook: String,

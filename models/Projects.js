@@ -1,18 +1,19 @@
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var projectSchema = new mongoose.Schema({
   /*  Custom  */
   name: String,
   description: String,
-  users: [Schema.Types.ObjectID],
-  followers: [Schema.Types.ObjectID],
+  users: [Schema.Types.ObjectId],
+  followers: [Schema.Types.ObjectId],
   repos: [{
-      id: Schema.Types.ObjectID, 
+      id: Schema.Types.ObjectId, 
       authed: Boolean
     }],
-  tags: [Schema.Types.ObjectID],
+  tags: [Schema.Types.ObjectId],
   
   /*  *****  */
 
