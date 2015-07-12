@@ -6,8 +6,8 @@ var tagSchema = new mongoose.Schema({
 
   /*  Custom  */
   name: String,
-  users: [mongoose.Types.ObjectID], //projects
-  projects: [mongoose.Types.ObjectID],  //projects
+  users: [Schema.Types.ObjectID], //projects
+  projects: [Schema.Types.ObjectID],  //projects
   /*  ******  */
 
   resetPasswordToken: String,

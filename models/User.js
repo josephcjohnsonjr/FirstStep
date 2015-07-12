@@ -8,9 +8,9 @@ var userSchema = new mongoose.Schema({
   
   /*  Custom  */
   type: String,
-  member_of: [mongoose.Types.ObjectID], //projects
-  creator_of: [mongoose.Types.ObjectID],  //projects
-  tags: [mongoose.Types.ObjectID],
+  member_of: [{Schema.Types.ObjectID}], //projects
+  creator_of: [Schema.Types.ObjectID],  //projects
+  tags: [Schema.Types.ObjectID],
   /*  Custom  */
   
   facebook: String,

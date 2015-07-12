@@ -6,13 +6,13 @@ var projectSchema = new mongoose.Schema({
   /*  Custom  */
   name: String,
   description: String,
-  users: [mongoose.Types.ObjectID],
-  followers: [mongoose.Types.ObjectID],
+  users: [Schema.Types.ObjectID],
+  followers: [Schema.Types.ObjectID],
   repos: [{
-      id: mongoose.Types.ObjectID, 
+      id: Schema.Types.ObjectID, 
       authed: Boolean
     }],
-  tags: [mongoose.Types.ObjectID],
+  tags: [Schema.Types.ObjectID],
   
   /*  *****  */
 
