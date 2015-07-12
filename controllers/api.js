@@ -138,10 +138,9 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
     break;
   }
 
-  Projects.findOne({repos.url: doc.repo_url}, function(err, doc){
-
-    this.updates[this.updates.length] = doc;
-    this.save;
+  Projects.find({_id: '55a268cee4b0b251e7140e20'}, function(err, documen){
+    documen.updates[documen.updates] = doc;
+    documen.save();
     res.send({url: doc.repo_url, authed: true, err: err, doc: doc});
   });
 };
