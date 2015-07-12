@@ -11,7 +11,7 @@ var lob = require('lob')(secrets.lob.apiKey);
 var ig = require('instagram-node').instagram();
 var Y = require('yui/yql');
 var _ = require('lodash');
-var Project = require('./../models/Projects');
+var Projects = require('./../models/Projects');
 /**
  * GET /api
  * List of API examples.
