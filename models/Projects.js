@@ -10,9 +10,10 @@ var projectSchema = new mongoose.Schema({
   users: [Schema.Types.ObjectId],
   followers: [Schema.Types.ObjectId],
   repos: [{
-      id: Schema.Types.ObjectId, 
+      url: String, 
       authed: Boolean
     }],
+  updates: [Schema.Types.Mixed],
   tags: [Schema.Types.ObjectId],
   
   /*  *****  */
@@ -21,7 +22,7 @@ var projectSchema = new mongoose.Schema({
   gender: { type: String, default: '' },
   location: { type: String, default: '' },
   website: { type: String, default: '' },
-  picture: { type: String, default: '' }
+  picture: { type: String, default: '' },
 
 //  resetPasswordToken: String,
 //  resetPasswordExpires: Date

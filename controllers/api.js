@@ -11,7 +11,7 @@ var lob = require('lob')(secrets.lob.apiKey);
 var ig = require('instagram-node').instagram();
 var Y = require('yui/yql');
 var _ = require('lodash');
-
+var Projects = require('./../models/Projects');
 /**
  * GET /api
  * List of API examples.
@@ -52,19 +52,95 @@ exports.getGithub = function(req, res, next) {
 
 exports.postGithubWebhook = function(req, res) { //set up github webhook => https://developer.github.com/v3/repos/hooks/#create-a-hook
   
-  res.send('hook recieved: '+ JSON.stringify(req.body)+
-            'headers: '+ JSON.stringify(req.headers));
-  /*var token = _.find(req.user.tokens, { kind: 'github' });
-  var github = new Github({ token: token.accessToken });
-  var repo = github.getRepo('sahat', 'requirejs-library');
-  repo.show(function(err, repo) {
-    if (err) return next(err);
-    res.render('api/github', {
-      title: 'GitHub API',
-      repo: repo
-    });
-  });*/
+  var type = req.headers['x-github-event'];
+  var doc = {};
+  doc.type = type;
+  switch(type){
+    case 'deployment':
+      var repo = req.body.repository;
+      var repo_url = repo.html_url;
 
+      var deployment = req.body.deployment;
+      var deployment_url = deployment.url;
+
+      doc.repo = repo;
+      doc.repo_url = repo_url;
+      doc.deployment = deployment;
+      doc.deployment_url = deployment_url;
+    break;
+    case 'pull_request':
+      var repo = req.body.repository;
+      var repo_url = repo.html_url;
+
+      var action = req.body.action;
+
+      var pull_request = req.body.pull_request;
+      var pull_request_link = pull_request.url;
+      var pull_request_title = pull_request.title;
+
+      var user = pull_request.user;
+      var user_link = user.link;
+      var user_username = user.login;
+
+      doc.repo = rep;
+      doc.repo_url = repo_url;
+      doc.action = action;
+      doc.pull_request = pull_request;
+      doc.pull_request_link = pull_request_link;
+      doc.pull_request_title = pull_request_title;
+      doc.user = user;
+      doc.user_link = user_link;
+      doc.user_username = user_username;
+
+    break;
+    case 'issues':
+      var repo = req.body.repository;
+      var repo_url = repo.html_url;
+
+      var action = req.body.action;
+      var issue = req.body.issue;
+      var link = issue.url;
+
+      var sender = req.body.sender;
+
+      var user = pull_request.user;
+      var user_link = user.link;
+      var user_username = user.login;
+      doc.repo = repo;
+      doc.repo_url = repo_url;
+      doc.action = action;
+      doc.issue = issue;
+      doc.link = link;
+      doc.sender = sender;
+      doc.user = user;
+      doc.user_link = user_link;
+      doc.user_username = user_username;
+    break;
+    case 'push':
+      var repo = req.body.repository;
+      var repo_url = repo.html_url;
+
+      var commits = req.body.commits;
+      
+      var sender = req.body.sender;
+      var sender_link = sender.url;
+      var sender_username = sender.login;
+
+      doc.repo = repo;
+      doc.repo_url = repo_url;
+      doc.commits = commits;
+      doc.sender = sender;
+      doc.sender_link = sender_link;
+      doc.sender_username = sender_username;
+    break;
+  }
+
+  Projects.findOne({_id: '55a268cee4b0b251e7140e20'}, function(err, documen){
+    if(err) res.send({ok: false});
+    documen.updates[documen.updates.length] = doc;
+    documen.save();
+    res.send({url: doc.repo_url, authed: true, err: err, doc: documen});
+  });
 };
 
 /**
