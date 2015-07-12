@@ -98,7 +98,7 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
     break;
     case 'issues':
       var repo = req.body.repository;
-      var repo_url = repository.html_url;
+      var repo_url = repo.html_url;
 
       var action = req.body.action;
       var issue = req.body.issue;
@@ -121,7 +121,7 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
     break;
     case 'push':
       var repo = req.body.repository;
-      var repo_url = repository.html_url;
+      var repo_url = repo.html_url;
 
       var commits = req.body.commits;
       
