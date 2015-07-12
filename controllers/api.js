@@ -143,6 +143,7 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
     documen.updates[documen.updates.length] = doc;
     documen.save(function(err){
       res.send({err: err});
+      return;
     });
     res.send({url: doc.repo_url, authed: true, err: err, doc: documen});
   });
