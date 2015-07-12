@@ -138,7 +138,7 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
     break;
   }
 
-  Projects.find().elemMatch('repos', {url: doc.repo_url, authed: true}, function(err, doc){
+  Projects.findOne({repos.url: doc.repo_url}, function(err, doc){
 
     this.updates[this.updates.length] = doc;
     this.save;
