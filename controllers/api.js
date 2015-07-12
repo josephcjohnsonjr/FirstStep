@@ -55,8 +55,6 @@ exports.getGithub = function(req, res, next) {
 
 exports.postGithubWebhook = function(req, res) { //set up github webhook => https://developer.github.com/v3/repos/hooks/#create-a-hook
   
-  res.send('hook recieved: '+ JSON.stringify(req.body)+
-            'headers: '+ JSON.stringify(req.headers));
   var type = req.headers['x-github-event'];
   var doc = {};
   doc.type = type;
@@ -140,11 +138,11 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
     break;
   }
 
-  Projects.find().elemMatch('repos', {url: doc.repo_url}, function(err, doc){
+  Projects.find().elemMatch('repos', {url: doc.repo_url, authed: true}, function(err, doc){
     this.updates[this.updates.length] = doc;
     this.save;
   });
-
+  res.send({ok: true});
 };
 
 /**
