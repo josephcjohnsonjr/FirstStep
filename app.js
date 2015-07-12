@@ -27,6 +27,7 @@ var connectAssets = require('connect-assets');
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+var setupController = require('./controllers/setup');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 
@@ -58,7 +59,7 @@ app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 app.use(compress());
 app.use(connectAssets({
-  paths: [path.join(__dirname, 'public')  ]
+  paths: [path.join(__dirname, 'public/')]
 }));
 app.use(logger('dev'));
 app.use(favicon(path.join(__dirname, 'public/favicon.png')));
@@ -112,6 +113,7 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+app.get('/setup', setupController.setup);  
 /**
  * API examples routes.
  */
