@@ -1,0 +1,112 @@
+@import url(http://fonts.googleapis.com/css?family=Arimo);
+@import url(http://fonts.googleapis.com/css?family=Arimo|Raleway:200);
+
+body.index {
+    background-image: url('../img/indexbg.jpg');
+    background-size: 100%;
+    margin: 0px auto;
+}
+
+body {
+    margin: 0px auto;
+}
+
+h1 {
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 50pt;
+}
+
+h2 {
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
+
+.blur   {
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+}
+
+#popup {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    background: #fff;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    padding: 10px;
+}
+
+#popup a {
+    color: #aabbcc;
+    font-size: 30px;
+    float: right;
+}
+
+#popup h3 {
+    color: #aabbcc;
+    font-size: 30px;
+    text-align: center;
+}
+
+#popup p {
+    color: #aabbcc;
+    font-size: 15px;
+}
+
+#overlay    {
+    position: fixed;
+    display: none;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(255,255,255,.3);
+    z-index: 999;
+}
+
+.join {
+    margin-top: -10px;
+}
+
+#container {
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
+
+.form-control {
+    height: 50px;
+    font-size: 15pt;
+}
+
+a.button {
+    padding: 14px 24px;
+    border: 3px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+a.button:hover {
+    color: #335544;
+    background: #fff;
+    text-decoration: none;
+}
+
+#toolbar {
+    height: 70px;
+    background-color: #7799aa;
+}

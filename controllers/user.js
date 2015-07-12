@@ -18,6 +18,10 @@ exports.postTags = function(_tags, callback) {
         })
 }
 
+// exports.findTags = function(_userid, _tags, callback) {
+//     User.find({ _id : _userid})
+// }
+
 /**
  * GET /login
  * Login page.
