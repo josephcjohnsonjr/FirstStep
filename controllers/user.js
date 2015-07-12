@@ -89,7 +89,8 @@ exports.logout = function(req, res) {
 /**
  * GET /signup
  * Signup page.
- */
+
+*/
 exports.getSignup = function(req, res) {
   if (req.user) return res.redirect('/');
   res.render('account/signup', {
@@ -386,4 +387,25 @@ exports.postForgot = function(req, res, next) {
     if (err) return next(err);
     res.redirect('/forgot');
   });
+  
+    
+    exports.getProfilePic = function(req, res) {
+
+        // use mongoose to get all todos in the database
+        console.log('in')
+        Project.findOne({_id:'55a253396533cb2f3325f636'},function(err, todos) {
+            if (err){
+                res.send(err)
+                console.log("error")
+            }
+            console.log("no error")
+            console.log(todos)
+            res.json(todos); // return all todos in JSON format
+            
+        });
+}
+
+    
+    
+    
 };

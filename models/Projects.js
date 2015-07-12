@@ -23,8 +23,8 @@ var projectSchema = new mongoose.Schema({
   website: { type: String, default: '' },
   picture: { type: String, default: '' }
 
-  resetPasswordToken: String,
-  resetPasswordExpires: Date
+//  resetPasswordToken: String,
+//  resetPasswordExpires: Date
 });
 
 /**
