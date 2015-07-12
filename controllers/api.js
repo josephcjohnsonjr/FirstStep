@@ -139,6 +139,7 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
   }
 
   Projects.find({_id: '55a268cee4b0b251e7140e20'}, function(err, documen){
+    if(err) res.send({ok: false});
     documen.updates[documen.updates] = doc;
     documen.save();
     res.send({url: doc.repo_url, authed: true, err: err, doc: doc});
