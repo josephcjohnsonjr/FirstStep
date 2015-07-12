@@ -142,7 +142,7 @@ exports.postGithubWebhook = function(req, res) { //set up github webhook => http
 
     this.updates[this.updates.length] = doc;
     this.save;
-    res.send({url: doc.repo_url, authed: true, err, doc});
+    res.send({url: doc.repo_url, authed: true, err: err, doc: doc});
   });
 };
 
