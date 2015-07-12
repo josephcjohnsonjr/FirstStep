@@ -2,20 +2,20 @@
 @import url(http://fonts.googleapis.com/css?family=Arimo|Raleway:200);
 
 body {
-    background-image: url('img/indexbg.jpg');
-    background-size: 100%;
-    margin: 0px auto;
+	background-image: url('img/indexbg.jpg');
+	background-size: 100%;
+	margin: 0px auto;
 }
 
 h1 {
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 50pt;
+	color: #fff;
+	font-family: 'Arimo', sans-serif;
+	font-size: 50pt;
 }
 
 h2 {
-    color: #fff;
-    font-family: 'Raleway', sans-serif;
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
 }
 
 .blur   {
@@ -36,24 +36,6 @@ h2 {
     top: 0px;
     bottom: 0px;
     margin: auto;
-    padding: 10px;
-}
-
-#popup a {
-    color: #aabbcc;
-    font-size: 30px;
-    float: right;
-}
-
-#popup h3 {
-    color: #aabbcc;
-    font-size: 30px;
-    text-align: center;
-}
-
-#popup p {
-    color: #aabbcc;
-    font-size: 15px;
 }
 
 #overlay    {
@@ -68,11 +50,11 @@ h2 {
 }
 
 .join {
-    margin-top: -10px;
+	margin-top: -10px;
 }
 
 #container {
-    left: 0;
+	left: 0;
     line-height: 200px;
     margin-top: -100px;
     position: absolute;
@@ -82,12 +64,12 @@ h2 {
 }
 
 .form-control {
-    height: 50px;
-    font-size: 15pt;
+	height: 50px;
+	font-size: 15pt;
 }
 
 a.button {
-    padding: 14px 24px;
+	padding: 14px 24px;
     border: 3px solid #fff;
     color: #fff;
     border-radius: 30px;
@@ -97,9 +79,9 @@ a.button {
 }
 
 a.button:hover {
-    color: #335544;
-    background: #fff;
-    text-decoration: none;
+	color: #335544;
+	background: #fff;
+	text-decoration: none;
 }
 
 a.btn:focus, a.btn:active:focus, a.btn.active:focus {
