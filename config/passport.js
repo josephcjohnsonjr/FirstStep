@@ -160,10 +160,10 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
         User.findById(req.user.id, function(err, user) {
           user.github = profile.id;
           user.tokens.push({ kind: 'github', accessToken: accessToken });
-          user.profile.name = user.profile.name || profile.displayName;
-          user.profile.picture = user.profile.picture || profile._json.avatar_url;
-          user.profile.location = user.profile.location || profile._json.location;
-          user.profile.website = user.profile.website || profile._json.blog;
+          user.name = user.profile.name || profile.displayName;
+          user.picture = user.profile.picture || profile._json.avatar_url;
+          user.location = user.profile.location || profile._json.location;
+          user.website = user.profile.website || profile._json.blog;
           user.save(function(err) {
             req.flash('info', { msg: 'GitHub account has been linked.' });
             done(err, user);
@@ -183,10 +183,10 @@ passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refre
           user.email = profile._json.email;
           user.github = profile.id;
           user.tokens.push({ kind: 'github', accessToken: accessToken });
-          user.profile.name = profile.displayName;
-          user.profile.picture = profile._json.avatar_url;
-          user.profile.location = profile._json.location;
-          user.profile.website = profile._json.blog;
+          user.name = profile.displayName;
+          user.picture = profile._json.avatar_url;
+          user.location = profile._json.location;
+          user.website = profile._json.blog;
           user.save(function(err) {
             done(err, user);
           });
