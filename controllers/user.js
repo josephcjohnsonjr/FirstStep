@@ -7,6 +7,18 @@ var User = require('../models/User');
 var secrets = require('../config/secrets');
 
 /**
+*post user tags to database
+*/
+exports.postTags = function(_tags, callback) {
+    User.update({
+            tags: _tags
+        },
+           function(err, result) {
+            return callback(err, result)
+        })
+}
+
+/**
  * GET /login
  * Login page.
  */
