@@ -9,3 +9,11 @@ exports.index = function(req, res) {
 
   });
 };
+
+exports.teampage = function(req, res) {
+
+  res.render('teampage', {
+    title: 'teampage'
+
+  });
+};

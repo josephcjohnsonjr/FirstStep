@@ -10,3 +10,9 @@ exports.project  = function(req,res){
 		title: 'Project'
 	});
 };
+
+exports.teampage = function(req,rest){
+	res.render('teampage', {
+		title: 'Team'
+	});
+};

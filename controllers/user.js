@@ -39,7 +39,10 @@ exports.postTags = function(req, res) {
    User.update({_id: userId}, {
     tags: _tags
 }, function(err, affected, resp) {
-   console.log(resp);
+     console.log(resp)
+     return res.redirect('teampage', {
+    title: 'teampage'
+  });
 })
     //console.log(User)
     
