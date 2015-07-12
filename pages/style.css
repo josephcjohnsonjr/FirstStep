@@ -1,0 +1,135 @@
+@import url(http://fonts.googleapis.com/css?family=Arimo:100);
+@import url(http://fonts.googleapis.com/css?family=Arimo|Raleway:200);
+
+body {
+	background-image: url('img/indexbg.jpg');
+	background-size: 100%;
+	margin: 0px auto;
+}
+
+h1 {
+	color: #fff;
+	font-family: 'Arimo', sans-serif;
+	font-size: 50pt;
+}
+
+h2 {
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+}
+
+.blur   {
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+}
+
+#popup {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    background: rgb(255,255,255);
+    border: 5px solid rgb(90,90,90);
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+}
+
+#overlay    {
+    position: fixed;
+    display: none;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(255,255,255,.8);
+    z-index: 999;
+}
+
+.join {
+	margin-top: -10px;
+}
+
+#container {
+	left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
+
+.form-control {
+	height: 50px;
+	font-size: 15pt;
+}
+
+a.button {
+	padding: 14px 24px;
+    border: 3px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+a.button:hover {
+	color: #335544;
+	background: #fff;
+	text-decoration: none;
+}
+
+a.btn:focus, a.btn:active:focus, a.btn.active:focus {
+    border: 2px solid #fff;
+    color: none;
+    border-radius: 24px;
+}
+
+.btn {
+    padding: 14px 24px;
+    border: 3px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+ 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    border: 2px solid #fff;
+    color: none;
+    border-radius: 24px;
+}
+ 
+.btn-primary {
+    background: none;
+    color: #ffffff;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #fff;
+    color: none;
+}
+ 
+.btn-primary:active, .btn-primary.active {
+    background: none;
+    box-shadow: none;
+}
+
+.btn-primary.outline {
+    border: 2px solid #fff;
+    border-radius: 24px;
+}
+
+.btn.outline {
+    background: none;
+    padding: 12px 22px;
+    border: 2px solid #fff;
+    border-radius: 24px;
+}
