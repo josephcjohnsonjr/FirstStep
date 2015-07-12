@@ -48,9 +48,6 @@ exports.getScraping = function(req, res, next) {
 exports.getGithub = function(req, res, next) {
   var token = _.find(req.user.tokens, { kind: 'github' });
   var github = new Github({ token: token.accessToken });
-  
-    res.render('setup')
-
 };
 
 exports.postGithubWebhook = function(req, res) { //set up github webhook => https://developer.github.com/v3/repos/hooks/#create-a-hook

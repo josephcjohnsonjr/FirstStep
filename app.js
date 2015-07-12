@@ -27,6 +27,7 @@ var connectAssets = require('connect-assets');
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+var projectController = require('./controllers/projects');
 var setupController = require('./controllers/setup');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
@@ -79,7 +80,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(lusca({
-  //csrf: true,
+//csrf: true,
   xframe: 'SAMEORIGIN',
   xssProtection: true
 }));
@@ -113,7 +114,11 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
-app.get('/setup', setupController.setup);  
+
+app.post('/project', projectController.postProject);
+app.get('/project', projectController.findProject);
+app.get('/setup', setupController.setup);
+app.get('/project', setupController.project);  
 /**
  * API examples routes.
  */
@@ -134,7 +139,7 @@ app.get('/api/lob', apiController.getLob);
  */
 app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
-  res.redirect(req.session.returnTo || '/');
+  res.redirect(req.session.returnTo || '/setup');
 });
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
