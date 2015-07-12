@@ -27,11 +27,8 @@ var connectAssets = require('connect-assets');
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
-<<<<<<< HEAD
 var projectController = require('./controllers/projects');
-=======
 var setupController = require('./controllers/setup');
->>>>>>> 251feaeff49b6070dbf8f470fa962f2c9692f7f8
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 
