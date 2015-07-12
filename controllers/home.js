@@ -4,7 +4,7 @@
  */
 exports.index = function(req, res) {
 
-  res.render('teampage.html', {
+  res.render('index', {
     title: 'Home'
 
   });
