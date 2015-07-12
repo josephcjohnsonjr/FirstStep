@@ -55,7 +55,8 @@ exports.getGithub = function(req, res, next) {
 
 exports.postGithubWebhook = function(req, res) { //set up github webhook => https://developer.github.com/v3/repos/hooks/#create-a-hook
   
-  res.send('hook recieved: '+ JSON.stringify(req.body));
+  res.send('hook recieved: '+ JSON.stringify(req.body)+
+            'headers: '+ JSON.stringify(req.headers));
   /*var token = _.find(req.user.tokens, { kind: 'github' });
   var github = new Github({ token: token.accessToken });
   var repo = github.getRepo('sahat', 'requirejs-library');
