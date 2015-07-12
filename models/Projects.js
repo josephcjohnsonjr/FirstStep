@@ -13,7 +13,7 @@ var projectSchema = new mongoose.Schema({
       url: String, 
       authed: Boolean
     }],
-  updates: [{type: String, payload:Schema.Types.Mixed}],
+  updates: [Schema.Types.Mixed],
   tags: [Schema.Types.ObjectId],
   
   /*  *****  */
