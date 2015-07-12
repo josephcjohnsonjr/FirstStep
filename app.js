@@ -54,11 +54,11 @@ mongoose.connection.on('error', function() {
  */
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
 app.use(compress());
 app.use(connectAssets({
-  paths: [path.join(__dirname, 'public/css'), path.join(__dirname, 'public/js')]
+  paths: [path.join(__dirname, 'public')  ]
 }));
 app.use(logger('dev'));
 app.use(favicon(path.join(__dirname, 'public/favicon.png')));
@@ -112,7 +112,6 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
-
 /**
  * API examples routes.
  */
@@ -147,9 +146,6 @@ app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRe
   res.redirect(req.session.returnTo || '/');
 });
 
-/**
- * OAuth authorization routes. (API examples)
- */
 
 /**
  * Error Handler.
