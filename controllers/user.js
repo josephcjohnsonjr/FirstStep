@@ -9,14 +9,9 @@ var secrets = require('../config/secrets');
 /**
 *post user tags to database
 */
-exports.postTags = function(_tags, callback) {
-    User.update({
-            tags: _tags
-        },
-           function(err, result) {
-            return callback(err, result)
-        })
-}
+// exports.postTags = function(_tags, callback) {
+
+// }
 
 // exports.findTags = function(_userid, _tags, callback) {
 //     User.find({ _id : _userid})
@@ -31,6 +26,23 @@ exports.getLogin = function(req, res) {
   res.render('account/login', {
     title: 'Login'
   });
+};
+
+/*
+* update user
+* tag data
+*/
+exports.postTags = function(req, res) {
+    var _tags = req.query.tags
+    var userId = req.user._id
+    console.log(User)
+   User.update({_id: userId}, {
+    tags: _tags
+}, function(err, affected, resp) {
+   console.log(resp);
+})
+    //console.log(User)
+    
 };
 
 /**

@@ -39,4 +39,16 @@ describe('User Model', function() {
       done();
     });
   });
+    
+ it('should create a new project', function(done) {
+    var user = new User({
+      email: 'test@gmail.com',
+      password: 'password'
+    });
+    user.save(function(err) {
+      if (err) return done(err);
+      done();
+    })
+  });
+    
 });

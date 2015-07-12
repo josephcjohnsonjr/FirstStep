@@ -11,7 +11,7 @@ var userSchema = new mongoose.Schema({
   type: String,
   member_of: [Schema.Types.ObjectId], //projects
   creator_of: [Schema.Types.ObjectId],  //projects
-  tags: [Schema.Types.ObjectId],
+  tags: [String],
   /*  Custom  */
   
   facebook: String,

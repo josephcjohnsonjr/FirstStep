@@ -27,6 +27,7 @@ var connectAssets = require('connect-assets');
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+var setupController = require('./controllers/setup');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 
@@ -58,7 +59,7 @@ app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 app.use(compress());
 app.use(connectAssets({
-  paths: [path.join(__dirname, 'public')  ]
+  paths: [path.join(__dirname, 'public/')]
 }));
 app.use(logger('dev'));
 app.use(favicon(path.join(__dirname, 'public/favicon.png')));
@@ -78,7 +79,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(lusca({
-  csrf: true,
+  //csrf: true,
   xframe: 'SAMEORIGIN',
   xssProtection: true
 }));
@@ -105,6 +106,7 @@ app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
+app.get('/updatetag', userController.postTags);//new method to update users tag when registering
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);
@@ -112,6 +114,8 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+app.get('/setup', setupController.setup);
+app.get('/project', setupController.project);  
 /**
  * API examples routes.
  */
@@ -120,6 +124,7 @@ app.get('/api/aviary', apiController.getAviary);
 app.get('/api/scraping', apiController.getScraping);
 app.get('/api/clockwork', apiController.getClockwork);
 app.post('/api/clockwork', apiController.postClockwork);
+app.post('/api/github/hook', apiController.postGithubWebhook);
 app.get('/api/github', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getGithub);
 app.get('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.getTwitter);
 app.post('/api/twitter', passportConf.isAuthenticated, passportConf.isAuthorized, apiController.postTwitter);
@@ -131,7 +136,7 @@ app.get('/api/lob', apiController.getLob);
  */
 app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
-  res.redirect(req.session.returnTo || '/');
+  res.redirect(req.session.returnTo || '/setup');
 });
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
