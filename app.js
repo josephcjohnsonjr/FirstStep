@@ -27,6 +27,7 @@ var connectAssets = require('connect-assets');
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+var projectController = require('./controllers/projects');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 
@@ -78,7 +79,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(lusca({
-  csrf: true,
+//  csrf: true,
   xframe: 'SAMEORIGIN',
   xssProtection: true
 }));
@@ -112,6 +113,10 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+
+app.post('/project', projectController.postProject);
+app.get('/project', projectController.findProject);
+        
 /**
  * API examples routes.
  */
