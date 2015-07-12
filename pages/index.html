@@ -12,6 +12,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap-social.css" />
+		<link rel="stylesheet" type="text/css" href="font-awesome.min.css" />
 	    <link rel="stylesheet" type="text/css" href="style.css" />
 	    <title>First Step - Home</title>
 	</head>
@@ -19,7 +21,7 @@
 
 		<div id="container">
 			<div class="row">
-				<h2>take your</h2>
+				<h2>Take your</h2>
 			</div>
 			<div class="row">
 				<h1 style="margin-top: -5px">FirstStep</h1>
@@ -34,6 +36,9 @@
 				<a href="javascript:myBlurFunction(0);"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
 				<h3>Where will the first step take me?</h3>
 				<p>Minorities should be empowered to start the journey of progress and blah blah blah</p>
+				<a class="btn btn-block btn-social btn-github">
+				    <i class="fa fa-github"></i> Sign in with Github
+				</a>
 			</div>
 		</div>
 
@@ -46,6 +51,7 @@
 
 			    if (state) {
 			        overlayEle.style.display = 'block';
+			        overlayEle.fadeIn("slow")
 			        containerElement.setAttribute('class', 'blur');
 			    } else {
 			        overlayEle.style.display = 'none';
